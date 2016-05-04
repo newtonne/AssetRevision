@@ -1,0 +1,20 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+	first:          true,
+	required:       true,
+	label:          "JSON manifest location"|t,
+	id:             "manifestPath",
+	name:           "manifestPath",
+	instructions:   "Path to the JSON manifest (relative to the public web root)."|t,
+	value:          (settings.manifestPath ? settings.manifestPath),
+	errors:         settings.getErrors('manifestPath')
+}) }}
+
+{{ forms.lightswitchField({
+    label:          "Use unrevisioned files in Dev Mode?"|t,
+    id:             "unrevisionedInDevMode",
+    name:           "unrevisionedInDevMode",
+    on:             settings.unrevisionedInDevMode,
+    errors:         settings.getErrors('unrevisionedInDevMode')
+}) }}
